@@ -1,0 +1,1 @@
+const registerUrl = 'http://0.0.0.0:46538/admins/register' ;

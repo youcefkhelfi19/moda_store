@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "182476836410",
+    "project_id": "modastore-bfc8a",
+    "storage_bucket": "modastore-bfc8a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:182476836410:android:6e28a158262eacffdf2f03",
+        "android_client_info": {
+          "package_name": "com.example.moda_store"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "182476836410-ce5r8q4oaci9ud5tc4c08u65018gtg5l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCHG9j4Uz9nq3Ys8U5jrtyM-Pwem8m6Nf0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "182476836410-ce5r8q4oaci9ud5tc4c08u65018gtg5l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
