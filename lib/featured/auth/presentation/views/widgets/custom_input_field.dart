@@ -13,16 +13,19 @@ class CustomInputField extends StatelessWidget {
   final String? Function(String?) validator;
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      keyboardType: isNumber?TextInputType.number:TextInputType.text,
-      validator: validator,
-      controller:  textEditingController,
-      decoration: InputDecoration(
-        hintText: hintText,
-       prefixIcon: Icon(prefixIcon)
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 5),
+      child: TextFormField(
+        keyboardType: isNumber?TextInputType.number:TextInputType.text,
+        validator: validator,
+        controller:  textEditingController,
+        decoration: InputDecoration(
+          hintText: hintText,
+         prefixIcon: Icon(prefixIcon)
+
+        ),
 
       ),
-
     );
   }
 }

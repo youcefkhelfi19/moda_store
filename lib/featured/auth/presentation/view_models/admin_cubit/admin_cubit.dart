@@ -55,8 +55,7 @@ class AdminCubit extends Cubit<AdminState> {
           .update({field: fieldValue}).then((value){
             fetchAdminData(id: getIt.get<GetStorage>().read('id'));
       });
-
-
+      
     }catch(e){
       customToast(
         msg: 'Something went wrong ', color: Colors.red

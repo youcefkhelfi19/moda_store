@@ -50,7 +50,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           child: ListView(
 
             children: [
-              SizedBox(height: 30,),
+              const SizedBox(height: 30,),
               Align(
                 alignment: Alignment.center,
                 child: Stack(
@@ -120,7 +120,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ),
                      CustomListTile(
                       title: 'Location',
-                      subtitle: Text('Setif,raselma,12'),
+                      subtitle: const Text('Setif,raselma,12'),
                       trailing: Icons.edit_location_alt_outlined,
                       onTap: ()async{
                        await context.read<AdminCubit>().getCurrentLocation();

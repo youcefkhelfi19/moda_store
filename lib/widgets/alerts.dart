@@ -11,12 +11,12 @@ customAlert({required BuildContext context, required String title, required Stri
     return AlertDialog(
      content: Column(
       crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
+      children: const [
        CircularProgressIndicator(
         color: AppColors.mainColor,
         value: 4,
        ),
-       const Text('Loading')
+       Text('Loading')
       ],
      ),
     );
