@@ -150,12 +150,12 @@ updateImages({required List<String> imagesLinks,required List<File> images, requ
           print('deleted Successfully');
         });
       }
-     await deleteDevice(id: product.productId.toString(),);
+     await deleteProduct(id: product.productId.toString(),);
     } catch (e) {
     }
   }
 
-  deleteDevice({required String id}) async {
+  deleteProduct({required String id}) async {
     try {
         await firebaseFirestore.collection('devices').doc(id).delete().whenComplete((){
         }
