@@ -1,9 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:moda_store/config/app_colors.dart';
 import 'package:moda_store/config/app_routes.dart';
+import 'package:moda_store/featured/products/data/presentation/view_model/product/add_product/add_product_cubit.dart';
+import 'package:moda_store/featured/products/data/presentation/view_model/product/product/product_cubit.dart';
 
 import '../../../models/product_model.dart';
 
@@ -71,21 +74,7 @@ class ProductCard extends StatelessWidget {
                     ),
                   ],
                 ),
-                Positioned(
-                  right: 5,
-                  top: 5,
-                  child: Container(
-                    padding: const EdgeInsets.all(5),
-                    decoration:  BoxDecoration(
-                        color: AppColors.mainColor.withOpacity(0.2),
-                        shape: BoxShape.circle
-                    ),
-                    child: InkWell(
-                        onTap: (){
-
-                        }, child: const Icon(Ionicons.trash_bin_outline,color: Colors.red,)),
-                  ),
-                ),
+                DeleteProductBtn(product: product),
                 Positioned(
                   right: 0,
                   bottom: 0,
@@ -113,7 +102,7 @@ class ProductCard extends StatelessWidget {
                         topLeft: Radius.circular(10)
                     )
                   ),
-                  child: Text('-${product.discount}%',style: const TextStyle(color: Colors.white),),
+                  child: Text('-${product.discount}%',style: const TextStyle(color: Colors.white,fontSize: 14),),
                 )),
                 Positioned(
                     left: 0,
@@ -126,11 +115,36 @@ class ProductCard extends StatelessWidget {
                       color: Colors.red,
 
                   ),
-                  child: Text('${(product.price)-(product.price*(product.discount/100))}DA',style: const TextStyle(color: Colors.white),),
+                  child: Text('${(product.price)-(product.price*(product.discount/100))}DA',style: const TextStyle(color: Colors.white,fontSize: 16),),
                 ))
               ],
             )
         ),
+      ),
+    );
+  }
+}
+
+class DeleteProductBtn extends StatelessWidget {
+  const DeleteProductBtn({
+    super.key, required this.product,
+  });
+ final Product product;
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+      right: 5,
+      top: 5,
+      child: Container(
+        padding: const EdgeInsets.all(3),
+        decoration:  BoxDecoration(
+            color: AppColors.mainColor.withOpacity(0.2),
+            shape: BoxShape.circle
+        ),
+        child: InkWell(
+            onTap: ()async{
+             await context.read<AddProductCubit>().deleteProductPictures(product: product);
+            }, child: const Icon(Ionicons.remove_circle,color: Colors.red,)),
       ),
     );
   }

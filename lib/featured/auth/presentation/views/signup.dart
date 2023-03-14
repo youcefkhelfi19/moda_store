@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:moda_store/featured/auth/data/models/admin.dart';
+import 'package:moda_store/featured/auth/presentation/views/widgets/password_form_field.dart';
 
 import '../../../../config/app_colors.dart';
 import '../../../../config/app_routes.dart';
@@ -60,96 +61,94 @@ class _SignupState extends State<Signup> {
     return Stack(
       children: [
         Scaffold(
-            body:WillPopScope(
-              onWillPop: alertExitApp,
-              child:  Form(
-                child: ListView(
-                  padding: const EdgeInsets.all(20),
-                  children: [
-                    SizedBox(height: MediaQuery.of(context).size.height*0.08,),
-                    const Align(
-                        alignment: Alignment.center,
-                        child: Text('welcome',style: TextStyles.style24,)),
-                    Container(
+            body:Form(
+              child: ListView(
+                padding: const EdgeInsets.all(20),
+                children: [
+                  SizedBox(height: MediaQuery.of(context).size.height*0.08,),
+                  const Align(
                       alignment: Alignment.center,
-                      padding: const EdgeInsets.only(top: 10,bottom: 30),
-                      child: Text('welcome_sub',textAlign: TextAlign.center,style: TextStyles.style20.copyWith(color: AppColors.mainColor),),
-                    ),
-                    SizedBox(height: MediaQuery.of(context).size.height*0.03,),
+                      child: Text('welcome',style: TextStyles.style24,)),
+                  Container(
+                    alignment: Alignment.center,
+                    padding: const EdgeInsets.only(top: 10,bottom: 30),
+                    child: Text('welcome_sub',textAlign: TextAlign.center,style: TextStyles.style20.copyWith(color: AppColors.mainColor),),
+                  ),
+                  SizedBox(height: MediaQuery.of(context).size.height*0.03,),
 
-                    CustomInputField(
-                      validator: (value){
-                        if(value!.isEmpty||value.length<3){
-                          return 'Please use a valid username';
-                        }
-                        return null;
-                      },
-                      textEditingController: TextEditingController(),
-                      hintText: 'username',
-                      prefixIcon: Ionicons.person_outline,
-                    ),
+                  CustomInputField(
+                    validator: (value){
+                      if(value!.isEmpty||value.length<3){
+                        return 'Please use a valid username';
+                      }
+                      return null;
+                    },
+                    textEditingController: usernameTextController,
+                    hintText: 'username',
+                    prefixIcon: Ionicons.person_outline,
+                  ),
 
-                    CustomInputField(
-                      validator: (value){
-                        if(!value!.contains('@')||value.isEmpty||value.length<4){
-                          return 'Please use a valid email';
-                        }
-                        return null;
-                      },
-                      textEditingController:  TextEditingController(),
-                      hintText: 'email',
-                      prefixIcon: Ionicons.mail_outline,
-                    ),
-                    CustomInputField(
-                      validator: (value){
-                        if(value!.length<10){
-                          return 'Try to use a valid phone number';
-                        }
-                        return null;
-                      },
+                  CustomInputField(
+                    validator: (value){
+                      if(!value!.contains('@')||value.isEmpty||value.length<4){
+                        return 'Please use a valid email';
+                      }
+                      return null;
+                    },
+                    textEditingController:  emailTextController,
+                    hintText: 'email',
+                    prefixIcon: Ionicons.mail_outline,
+                  ),
+                  CustomInputField(
+                    validator: (value){
+                      if(value!.length<10){
+                        return 'Try to use a valid phone number';
+                      }
+                      return null;
+                    },
 
-                      textEditingController:  TextEditingController(),
-                      hintText: 'phone',
-                      prefixIcon: Ionicons.call_outline,
-                      isNumber: true,
-                    ),
+                    textEditingController:  phoneTextController,
+                    hintText: 'phone',
+                    prefixIcon: Ionicons.call_outline,
+                    isNumber: true,
+                  ),
 
-                    CustomInputField(
-                      validator: (value){
-                        if(value!.length<4){
-                          return 'password must be more than 4 chr';
-                        }else if(value.contains(RegExp(r'[A-Z]'))&&value.contains(RegExp(r'[0-9]'))){
-                          return 'password should contains at least one uppercase and number';
+                  PasswordField(
+                    validator: (value){
+                      if(value!.length<4){
+                        return 'password must be more than 4 chr';
+                      }else if(value.contains(RegExp(r'[A-Z]'))&&value.contains(RegExp(r'[0-9]'))){
+                        return 'password should contains at least one uppercase and number';
 
-                        }
-                        return null;
-                      },
-                      textEditingController: TextEditingController(),
-                      hintText: 'password',
-                      prefixIcon: Ionicons.lock_closed_outline,
-                    ),
-                    const SizedBox(height: 10,),
-                    GlobalBtn(
-                      title: 'sign_up',
-                      onTap: ()  async{
-                        Admin admin = Admin(username: usernameTextController.text,
-                            email: emailTextController.text.trim(), phone: phoneTextController.text.trim(),
-                            address: '',
-                            image: ''
-                        );
-                        await BlocProvider.of<AuthCubit>(context).
-                        signup(admin: admin, password: passwordTextController.text.trim());
-                      },
-                    ),
-                    SizedBox(height: MediaQuery.of(context).size.height*0.15,),
+                      }
+                      return null;
+                    },
+                    textEditingController: passwordTextController,
+                    hintText: 'password',
+                    prefixIcon: Ionicons.lock_closed_outline,
+                  ),
+                  const SizedBox(height: 10,),
+                  GlobalBtn(
+                    title: 'sign_up',
+                    onTap: ()  async{
+                      Admin admin = Admin(username: usernameTextController.text,
+                          email: emailTextController.text.trim(),
+                          phone: phoneTextController.text.trim(),
+                          address: '',
+                          image: ''
+                      );
+                      await BlocProvider.of<AuthCubit>(context).
+                      signup(admin: admin, password: passwordTextController.text.trim());
+                    },
+                  ),
+                  SizedBox(height: MediaQuery.of(context).size.height*0.15,),
 
-                    const ScreenSwitch(
-                      description: "already_have_account",
-                      btnTitle: 'login', routeName: AppRoutes.login,
+                  const ScreenSwitch(
+                    description: "already_have_account",
+                    btnTitle: 'login', routeName: AppRoutes.login,
 
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             )
         ),

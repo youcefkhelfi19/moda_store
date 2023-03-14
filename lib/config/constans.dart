@@ -9,6 +9,9 @@ import '../featured/products/data/models/product_model.dart';
 const List<String> sizes = [
   'S','M','L','XL','XXL'
 ];
+const List<String> screensTitle = [
+  'STORE','ORDERS','PROFILE'
+];
 
 const List<String> shoesSizes = [
   '38','39','40','41','42','43','44','45','46'

@@ -26,7 +26,7 @@ class _MainScreenState extends State<MainScreen> {
        Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: const Text('SACA'),
+          title:  Text(screensTitle[_index]),
           elevation: 0.0,
           backgroundColor: AppColors.mainColor,
           actions: [IconButton(onPressed: (){
@@ -45,7 +45,7 @@ class _MainScreenState extends State<MainScreen> {
                label: '',
              ),
              BottomNavigationBarItem(
-               icon: Icon(Ionicons.heart_outline),
+               icon: Icon(Ionicons.cart_outline),
                label: '',
              ),
              BottomNavigationBarItem(

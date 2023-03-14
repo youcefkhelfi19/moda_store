@@ -5,9 +5,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:moda_store/config/app_colors.dart';
+import 'package:moda_store/config/app_routes.dart';
 import 'package:moda_store/config/constans.dart';
 import 'package:moda_store/config/text_styles.dart';
 import 'package:moda_store/featured/auth/presentation/view_models/admin_cubit/admin_cubit.dart';
+import 'package:moda_store/featured/auth/presentation/view_models/auth_cubit/auth_cubit.dart';
 import 'package:moda_store/featured/auth/presentation/views/widgets/upload_image.dart';
 import 'package:moda_store/services/locator.dart';
 import 'package:image_picker/image_picker.dart';
@@ -156,7 +158,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     SettingListTile(
                       title: 'logout',
                       trailing:IconButton(onPressed: (){
-
+                        context.read<AuthCubit>().logoutSession();
+                        Navigator.pushNamedAndRemoveUntil(context, AppRoutes.login, (route) => false);
                       }, icon: const Icon(Ionicons.log_out_outline),
                       ),
                     )

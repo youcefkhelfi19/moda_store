@@ -5,10 +5,10 @@ import 'app_colors.dart';
 
 
 ThemeData englishTheme = ThemeData(
-    fontFamily: 'PTSans-Regular',
-    textTheme: TextTheme(
-        headline1: TextStyles.style24,
-        bodyText1: TextStyles.style20
+    fontFamily: 'bb',
+    textTheme: const TextTheme(
+        bodyLarge: TextStyles.style24,
+        bodyMedium: TextStyles.style20
     ),
     inputDecorationTheme: InputDecorationTheme(
         filled: true,

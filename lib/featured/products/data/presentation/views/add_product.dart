@@ -36,7 +36,7 @@ class _AddProductState extends State<AddProduct> {
   List<String> selectedSizes = [];
   List<int> selectedColors = [];
   List<Asset> assetsImages = [];
-  bool isShoes = false;
+  bool isNumbers = false;
   bool isPopular = false;
   bool isRecommended = false;
   GlobalKey<FormState> formKey = GlobalKey();
@@ -345,8 +345,8 @@ class _AddProductState extends State<AddProduct> {
                           activeColor: AppColors.mainColor.withOpacity(0.7),
                           thumbColor: AppColors.mainColor,
                           trackColor: AppColors.secondaryColor,
-                          value: isShoes,
-                          onChanged: (value) => setState(() => isShoes = value),
+                          value: isNumbers,
+                          onChanged: (value) => setState(() => isNumbers = value),
                         ),
                       ],
                     ),
@@ -367,9 +367,9 @@ class _AddProductState extends State<AddProduct> {
                             unSelectedBorderColor: AppColors.mainColor,
                             enableShape: true,
                             unSelectedColor: Colors.white,
-                            buttonLables: isShoes?shoesSizes:sizes,
+                            buttonLables: isNumbers?shoesSizes:sizes,
                             autoWidth: false,
-                            buttonValuesList: isShoes?shoesSizes.cast<dynamic>():sizes.cast<dynamic>(),
+                            buttonValuesList: isNumbers?shoesSizes.cast<dynamic>():sizes.cast<dynamic>(),
                             checkBoxButtonValues: (values) {
                             setState(() {
                               selectedSizes = values.cast<String>();

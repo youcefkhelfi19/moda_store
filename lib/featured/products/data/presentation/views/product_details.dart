@@ -14,7 +14,6 @@ import 'package:moda_store/featured/products/data/presentation/views/widgets/col
 
 import '../../../../../config/app_colors.dart';
 import '../../../../../config/app_routes.dart';
-import '../../../../../config/constans.dart';
 import '../../models/product_model.dart';
 import '../../../../../widgets/colors_list.dart';
 import '../view_model/product/add_product/add_product_cubit.dart';
@@ -59,7 +58,7 @@ class _ProductDetailsState extends State<ProductDetails> {
               IconButton(onPressed: () {
                 Navigator.pushNamed(context, AppRoutes.update,arguments: state.product);
 
-              }, icon: const Icon(Ionicons.heart))
+              }, icon: const Icon(Icons.edit_outlined))
             ],
           ),
           body: ListView(
